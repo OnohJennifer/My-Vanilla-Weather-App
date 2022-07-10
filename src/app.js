@@ -22,7 +22,6 @@ function formatDate(timestamp) {
 }
 
 function showTemperature(response) {
-  console.log(response);
   let cityElement = document.querySelector("#city");
   let countryElement = document.querySelector("#country");
   let currentTemperature = document.querySelector("#temperature");
@@ -42,6 +41,7 @@ function showTemperature(response) {
 }
 
 let apiKey = "e330f70bea90351a337b95917ee9d746";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Enugu&appid=${apiKey}&units=metric
+let city = "Enugu";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric
 `;
 axios.get(apiUrl).then(showTemperature);
