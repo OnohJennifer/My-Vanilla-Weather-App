@@ -30,6 +30,8 @@ function showTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let pressureElement = document.querySelector("#pressure");
   let dateElement = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
+
   countryElement.innerHTML = response.data.sys.country;
   cityElement.innerHTML = response.data.name;
   currentTemperature.innerHTML = Math.round(response.data.main.temp);
@@ -38,6 +40,11 @@ function showTemperature(response) {
   humidityElement.innerHTML = Math.round(response.data.main.humidity);
   pressureElement.innerHTML = response.data.main.pressure;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 let apiKey = "e330f70bea90351a337b95917ee9d746";
