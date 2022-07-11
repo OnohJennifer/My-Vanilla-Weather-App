@@ -75,6 +75,20 @@ function showCelsiusTemperature(event) {
   currentTemperature.innerHTML = Math.round(celsiusTemp);
 }
 
+function showLocation(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiKey = "e330f70bea90351a337b95917ee9d746";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(showTemperature);
+}
+
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showLocation);
+}
+
 let celsiusTemp = null;
 
 let form = document.querySelector("#city-form");
@@ -85,5 +99,8 @@ fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#cels");
 celsiusLink.addEventListener("click", showCelsiusTemperature);
+
+let currentLocationIcon = document.querySelector("#location");
+currentLocationIcon.addEventListener("click", getCurrentLocation);
 
 search("Enugu");
