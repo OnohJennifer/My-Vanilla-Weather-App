@@ -32,6 +32,8 @@ function showTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
+  celsiusTemp = response.data.main.temp;
+
   countryElement.innerHTML = response.data.sys.country;
   cityElement.innerHTML = response.data.name;
   currentTemperature.innerHTML = Math.round(response.data.main.temp);
@@ -60,7 +62,28 @@ function handleSubmit(event) {
   search(enterCityElement.value);
 }
 
-search("Enugu");
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  let currentTemperature = document.querySelector("#temperature");
+  currentTemperature.innerHTML = Math.round(fahrenheitTemp);
+}
+
+function showCelsiusTemperature(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector("#temperature");
+  currentTemperature.innerHTML = Math.round(celsiusTemp);
+}
+
+let celsiusTemp = null;
 
 let form = document.querySelector("#city-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahr");
+fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#cels");
+celsiusLink.addEventListener("click", showCelsiusTemperature);
+
+search("Enugu");
