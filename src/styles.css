@@ -21,14 +21,14 @@ form {
 }
 .location {
   font-size: 35px;
-  color: #146ebe;
+  color: #061624;
   margin: 0;
   float: right;
   top: 5;
   position: relative;
 }
 .location:hover {
-  color: #061624;
+  color: #146ebe;
   transition: all 200ms ease-in-out;
   cursor: pointer;
 }
