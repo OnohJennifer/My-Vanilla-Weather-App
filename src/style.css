@@ -45,7 +45,7 @@ form {
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: hue;
-  border-radius: 20px;
+  border-radius: 2px;
   box-shadow: 5px 5px 5px #dbd6f6;
 }
 .weather-app {
