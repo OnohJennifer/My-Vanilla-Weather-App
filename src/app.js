@@ -4,6 +4,12 @@ function formatDate(timestamp) {
   if (hours < 10) {
     hours = `0${hours}`;
   }
+
+  if (hours <= 6 && hours >= 18) {
+    document.getElementById("#app-wrapper").style.backgroundImage =
+      url("/images/img1.jpg");
+  }
+
   let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;

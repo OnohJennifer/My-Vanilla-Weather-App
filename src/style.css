@@ -46,6 +46,7 @@ form {
   background-size: cover;
   background-blend-mode: hue;
   border-radius: 30px;
+  box-shadow: #dbd6f6;
 }
 .weather-app {
   padding: 20px;
