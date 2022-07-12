@@ -6,8 +6,9 @@ function formatDate(timestamp) {
   }
 
   if (hours <= 6 && hours >= 18) {
-    document.getElementById("#app-wrapper").style.backgroundImage =
-      url("/images/img1.jpg");
+    document.getElementById("#app-wrapper").style.backgroundImage = url(
+      "/images/nightsky.jpg"
+    );
   }
 
   let minutes = date.getMinutes();
