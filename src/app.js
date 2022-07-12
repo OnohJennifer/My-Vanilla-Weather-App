@@ -110,4 +110,5 @@ celsiusLink.addEventListener("click", showCelsiusTemperature);
 let currentLocationIcon = document.querySelector("#location");
 currentLocationIcon.addEventListener("click", getCurrentLocation);
 
+formatDate(timestamp);
 search("Enugu");
