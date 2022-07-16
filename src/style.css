@@ -21,14 +21,15 @@ form {
 }
 .location {
   font-size: 35px;
-  color: #061624;
+  color: #fa0404;
   margin: 0;
   float: right;
   top: 5;
   position: relative;
+  border-radius: 5px;
 }
 .location:hover {
-  color: #146ebe;
+  color: #f56b6b;
   transition: all 200ms ease-in-out;
   cursor: pointer;
 }
@@ -55,14 +56,22 @@ form {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
+.daily-forecast {
+  font-size: 20px;
+  text-align: center;
+  color: #821291;
+}
+
 .forecast-max-temp {
   font-size: 17.5px;
   text-align: center;
 }
 
 .forecast-min-temp {
-  font-size: 17px;
-  opacity: 0.5;
+  font-size: 16.5px;
+  color: #05030f;
+  opacity: 0.4;
+
   text-align: left;
 }
 
@@ -77,8 +86,9 @@ form {
   padding: 0;
 }
 .forecast-date {
-  font-size: 18px;
+  font-size: 17px;
   text-align: center;
+  color: #7d92fc;
 }
 
 .git-link {
