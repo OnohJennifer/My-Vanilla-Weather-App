@@ -22,6 +22,31 @@ function formatDate(timestamp) {
   return `${days[date.getDay()]} ${hours}:${minutes}`;
 }
 
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+              <div class="col-2">
+                <span class="forecast-date">${day}</span>
+                <br />
+                <i class="fa-solid fa-cloud-moon-rain font-color"></i>
+                <br />
+                <span class="forecast-max-temp">12°</span>
+                <br />
+                <span class="forecast-min-temp">11°</span>
+              
+            </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   let cityElement = document.querySelector("#city");
   let countryElement = document.querySelector("#country");
@@ -91,6 +116,8 @@ function getCurrentLocation(event) {
 }
 
 let celsiusTemp = null;
+
+showForecast();
 
 let form = document.querySelector("#city-form");
 form.addEventListener("submit", handleSubmit);
