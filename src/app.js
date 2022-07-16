@@ -1,47 +1,91 @@
 function formatDate(timestamp) {
-  let date = new Date(timestamp);
-  let hours = date.getHours();
+  let now = new Date(timestamp);
+  let hours = now.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
 
-  let minutes = date.getMinutes();
+  let minutes = now.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  let day = date.getDay();
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
+  let day = now.getDay();
+  let date = now.getUTCDate();
+  let month = now.getMonth();
+
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
-  return `${days[date.getDay()]} ${hours}:${minutes}`;
+
+  return `${days[now.getDay()]} ${
+    months[now.getMonth()]
+  } ${date}, ${hours}:${minutes}`;
+}
+
+function formatDay(timestamp) {
+  let now = new Date(timestamp * 1000);
+  let day = now.getDay();
+  let date = now.getUTCDate();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  return `${days[day]},${months[now.getMonth()]} ${date}`;
 }
 
 function showForecast(response) {
-  console.log(response.data);
+  console.log(response.data.daily);
+  let dailyForecasts = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+
+  dailyForecasts.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
               <div class="col-2">
-                <span class="forecast-date">${day}</span>
+                
+                <span class="forecast-date">${formatDay(forecastDay.dt)}</span>
                 <br />
-                <i class="fa-solid fa-cloud-moon-rain font-color"></i>
+                <img src="http://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png" class="forecast-icons" />
+                <span class="forecast-max-temp">${Math.round(
+                  forecastDay.temp.max
+                )}°</span>
                 <br />
-                <span class="forecast-max-temp">12°</span>
-                <br />
-                <span class="forecast-min-temp">11°</span>
+                <span class="forecast-min-temp">${Math.round(
+                  forecastDay.temp.min
+                )}°</span>
               
             </div>`;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;

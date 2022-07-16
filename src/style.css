@@ -61,11 +61,21 @@ form {
 }
 
 .forecast-min-temp {
-  font-size: 16px;
+  font-size: 17px;
   opacity: 0.5;
-  text-align: center;
+  text-align: left;
 }
 
+.forecast-icons {
+  margin: 0;
+  height: 70px;
+  width: 70px;
+  box-sizing: border-box;
+}
+
+.weather-forecast {
+  padding: 0;
+}
 .forecast-date {
   font-size: 18px;
   text-align: center;
