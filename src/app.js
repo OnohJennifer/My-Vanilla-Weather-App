@@ -54,7 +54,7 @@ function formatDay(timestamp) {
     "Dec",
   ];
 
-  return `${days[day]},${months[now.getMonth()]} ${date}`;
+  return days[day];
 }
 
 function showForecast(response) {
