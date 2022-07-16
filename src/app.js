@@ -58,7 +58,6 @@ function formatDay(timestamp) {
 }
 
 function showForecast(response) {
-  console.log(response.data.daily);
   let dailyForecasts = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
@@ -144,8 +143,9 @@ function handleSubmit(event) {
 
 function showFahrenheitTemperature(event) {
   event.preventDefault();
-  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
   let currentTemperature = document.querySelector("#temperature");
+
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
   currentTemperature.innerHTML = Math.round(fahrenheitTemp);
 }
 
